@@ -12,15 +12,22 @@
           &nbsp; Upload your papaya image that you want to classify its ripeness
         </h4>
       </div>
-    </div>
+    </div>hey
+    <UploadImages @change="handleImages" uploadMsg="upload papaya images" fileError="images files only accepted" :max="1" maxError="Max files exceed"/>
   </div>
 </template>
 
 <script>
-export default {};
+import UploadImages from "vue-upload-drop-images";
+
+export default {
+               components:{UploadImages}
+               }
+
 </script>
 
 <style>
+
 .center {
   text-align: center;
 }
