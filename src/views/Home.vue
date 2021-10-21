@@ -1,28 +1,58 @@
 <template>
-  <!-- Div for Home Section -->
-  <div class="home">
-    <div id="div-1"></div>
-    <!-- Div for coming up rectangular -->
-    <div id="div-2" class="center">
-      <h1 class="display-3 font-weight-light">Predict your Papaya!</h1>
-      <br />
-      <div class="flex">
-        <v-icon color="black">mdi-cloud-upload</v-icon>
-        <h4 class="font-weight-light">
-          &nbsp; Upload your papaya image that you want to classify its ripeness
-        </h4>
+  <div>
+    <!-- Div for Home Section -->
+    <div class="home">
+      <div id="div-1"></div>
+      <!-- Div for coming up rectangular -->
+      <div id="div-2" class="center">
+        <h1 class="display-3 font-weight-light">Predict your Papaya!</h1>
+        <br />
+        <div class="flex">
+          <v-icon color="black">mdi-cloud-upload</v-icon>
+          <h4 class="font-weight-light">
+            &nbsp; Upload your papaya image that you want to classify its
+            ripeness
+          </h4>
+        </div>
       </div>
+      <div id="div-1"></div>
     </div>
-    <div id="div-1"></div>
-    hey
+    <div class="reduce">
+    <div class="size">
+      <UploadImages
+        @change="handleImages"
+        uploadMsg="Drop your image here, or click to select image"
+        fileError="images files only accepted"
+        :max="1"
+        maxError="Max files exceed"
+      />
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import UploadImages from "vue-upload-drop-images";
+function handleImages(files) {
+  console.log(files+"Hello");
+}
+export default {
+  components: { UploadImages,handleImages },
+};
 </script>
 
 <style>
+.size {
+  border-radius: 25px;
+  background-image: url("../assets/Papaya-fruit.jpg");
+  background-size: 200% 200%;
+  background-position: center bottom;
+  padding: 20px;
+}
+.reduce{
+  padding-left: 30%;
+  padding-right: 30%;
+}
 .center {
   text-align: center;
 }
