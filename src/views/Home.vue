@@ -18,7 +18,7 @@
       <div id="div-1"></div>
     </div>
     <div class="reduce">
-    <div class="size">
+    <div class="size" v-if="upload">
       <UploadImages
         @changed="handleImages"
         uploadMsg="Drop your image here, or click to select image"
@@ -26,16 +26,20 @@
         :max="1"
         maxError="Max files exceed"
       />
-      
+    </div>
+    <div v-else>
+      Loading..
     </div>
     </div>
   </div>
 </template>
 
 <script>
+
 import UploadImages from "vue-upload-drop-images";
 function handleImages(files){
                 console.log(files)
+                this.upload = false;
                 /*
                   [
                     {
@@ -50,6 +54,11 @@ function handleImages(files){
                  */
             }
 export default {
+  data(){
+    return{
+      upload: true
+    }
+  },
   components: { UploadImages},
   methods:{
             handleImages
