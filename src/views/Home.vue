@@ -20,12 +20,13 @@
     <div class="reduce">
     <div class="size">
       <UploadImages
-        @change="handleImages"
+        @changed="handleImages"
         uploadMsg="Drop your image here, or click to select image"
         fileError="images files only accepted"
         :max="1"
         maxError="Max files exceed"
       />
+      
     </div>
     </div>
   </div>
@@ -33,12 +34,28 @@
 
 <script>
 import UploadImages from "vue-upload-drop-images";
-function handleImages(files) {
-  console.log(files+"Hello");
-}
+function handleImages(files){
+                console.log(files)
+                /*
+                  [
+                    {
+                        "name": "Screenshot from 2021-02-23 12-36-33.png",
+                        "size": 319775,
+                        "type": "image/png",
+                        "lastModified": 1614080193596
+                        ...
+                    },
+                    ...
+                    ]
+                 */
+            }
 export default {
-  components: { UploadImages,handleImages },
+  components: { UploadImages},
+  methods:{
+            handleImages
+        }
 };
+
 </script>
 
 <style>
