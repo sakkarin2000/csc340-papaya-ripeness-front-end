@@ -28,7 +28,15 @@
       />
     </div>
     <div v-else>
-      Loading..
+      <div id="div-1"></div>
+      <div class="flex">
+      <v-img src="../assets/Animation.gif">
+      </v-img>
+      </div>
+      <div id="div-1"></div>
+      <div class="center">
+        <h2 class="display-3 font-weight-light">Please Wait...</h2>
+      </div>
     </div>
     </div>
   </div>
