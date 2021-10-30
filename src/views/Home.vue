@@ -18,36 +18,54 @@
       <div id="div-1"></div>
     </div>
     <div class="reduce">
-    <div class="size" v-if="upload">
-      <UploadImages
-        @changed="handleImages"
-        uploadMsg="Drop your image here, or click to select image"
-        fileError="images files only accepted"
-        :max="1"
-        maxError="Max files exceed"
-      />
-    </div>
-    <div v-else>
+      <div class="size" v-if="resultOne">
+        <UploadImages
+          @changed="handleImages"
+          uploadMsg="Drop your image here, or click to select image"
+          fileError="images files only accepted"
+          :max="1"
+          maxError="Max files exceed"
+        />
+      </div>
+      <div v-else>
+        <div id="div-1"></div>
+        <div class="flex">
+          <div class="center">
+            <h5 class="display-2 font-weight-light">Result</h5>
+          </div>
+        </div>
+      </div>
+      <!-- Div Please Wait (v-if= upload) -->
+      <!-- <div v-else> 
       <div id="div-1"></div>
       <div class="flex">
-      <v-img src="../assets/Animation.gif">
+      <v-img src="../assets/Animation.gif" max-height="300" max-width="291">
       </v-img>
       </div>
       <div id="div-1"></div>
       <div class="center">
         <h2 class="display-3 font-weight-light">Please Wait...</h2>
       </div>
+    </div> -->
     </div>
-    </div>
+     <img v-bind:src="picture" height="500"/>
+     <h5 class="display-1 font-weight-light">Number of papayas</h5>
+     <h2 class="font-weight-light">Ripe: 9</h2>
+     <h2 class="font-weight-light">Medium: 9</h2>
+     <h2 class="font-weight-light">Unripe: 9</h2>
   </div>
 </template>
 
 <script>
 
 import UploadImages from "vue-upload-drop-images";
+let picture;
 function handleImages(files){
-                console.log(files)
+                this.picture = window.URL.createObjectURL(files[0]);
+                console.log(files[0].name)
                 this.upload = false;
+                this.resultOne = false;
+                
                 /*
                   [
                     {
@@ -64,7 +82,9 @@ function handleImages(files){
 export default {
   data(){
     return{
-      upload: true
+      upload: true,
+      resultOne: true,
+      picture
     }
   },
   components: { UploadImages},
@@ -76,6 +96,10 @@ export default {
 </script>
 
 <style>
+.left{
+  display: flex;
+  align-items: flex-start;
+}
 .size {
   border-radius: 25px;
   background-image: url("../assets/Papaya-fruit.jpg");
@@ -83,7 +107,7 @@ export default {
   background-position: center bottom;
   padding: 20px;
 }
-.reduce{
+.reduce {
   padding-left: 30%;
   padding-right: 30%;
 }

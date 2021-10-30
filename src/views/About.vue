@@ -1,39 +1,24 @@
 <template>
- <div class="about">
-   <v-container>
-    <v-row no-gutters>
-      <v-col>
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-          
-        >
-          <v-img src="../assets/Body.png" width="800px">
-          </v-img>
-        </v-card>
-      </v-col>
-      <v-col order="12">
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          <v-img src="../assets/image 1.png" width="500px">
-          </v-img>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-  </div> 
+  <div class="about">
+    <v-img src="../assets/Body.png" max-height="574" max-width="610"> </v-img>
+    <div class="box"></div>
+    <v-img src="../assets/cartoon.png" max-height="500" max-width="355">
+    </v-img>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+.box{
+  width: 90px;
+}
 </style>
