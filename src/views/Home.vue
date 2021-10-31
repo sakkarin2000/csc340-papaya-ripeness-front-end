@@ -17,8 +17,9 @@
       </div>
       <div id="div-1"></div>
     </div>
-    <div class="reduce">
-      <div class="size" v-if="resultOne">
+    <!-- Div for If condition -->
+    <div style="padding-left: 30%;padding-right: 30%;" v-if="resultOne">
+      <div class="size">
         <UploadImages
           @changed="handleImages"
           uploadMsg="Drop your image here, or click to select image"
@@ -27,15 +28,10 @@
           maxError="Max files exceed"
         />
       </div>
-      <div v-else>
-        <div id="div-1"></div>
-        <div class="flex">
-          <div class="center">
-            <h5 class="display-2 font-weight-light">Result</h5>
-          </div>
-        </div>
-      </div>
-      <!-- Div Please Wait (v-if= upload) -->
+    </div>
+    <!-- Div for Else Condition-->
+    <div v-else>
+       <!-- Div Please Wait (v-if= upload) -->
       <!-- <div v-else> 
       <div id="div-1"></div>
       <div class="flex">
@@ -47,26 +43,40 @@
         <h2 class="display-3 font-weight-light">Please Wait...</h2>
       </div>
     </div> -->
-    </div>
-     <img v-bind:src="picture" height="500"/>
-     <h5 class="display-1 font-weight-light">Number of papayas</h5>
-     <h2 class="font-weight-light">Ripe: 9</h2>
-     <h2 class="font-weight-light">Medium: 9</h2>
-     <h2 class="font-weight-light">Unripe: 9</h2>
+        <div id="div-1"></div>
+        <div class="flex">
+          <div class="center">
+            <h5 class="display-2 font-weight-light">Result</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <img v-bind:src="picture" height="500" />
+          </div>
+          <div class="column">
+            <h5 class="display-1 font-weight-light">Number of papayas</h5>
+            <h2 class="font-weight-light">Ripe: 9</h2>
+            <h2 class="font-weight-light">Medium: 9</h2>
+            <h2 class="font-weight-light">Unripe: 9</h2>
+          </div>
+          <div class="column">
+            <img v-bind:src="picture" height="500" />
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
-
 import UploadImages from "vue-upload-drop-images";
 let picture;
-function handleImages(files){
-                this.picture = window.URL.createObjectURL(files[0]);
-                console.log(files[0].name)
-                this.upload = false;
-                this.resultOne = false;
-                
-                /*
+function handleImages(files) {
+  this.picture = window.URL.createObjectURL(files[0]);
+  console.log(files[0].name);
+  this.upload = false;
+  this.resultOne = false;
+
+  /*
                   [
                     {
                         "name": "Screenshot from 2021-02-23 12-36-33.png",
@@ -78,25 +88,36 @@ function handleImages(files){
                     ...
                     ]
                  */
-            }
+}
 export default {
-  data(){
-    return{
+  data() {
+    return {
       upload: true,
       resultOne: true,
-      picture
-    }
+      picture,
+    };
   },
-  components: { UploadImages},
-  methods:{
-            handleImages
-        }
+  components: { UploadImages },
+  methods: {
+    handleImages,
+  },
 };
-
 </script>
 
 <style>
-.left{
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 20px;
+  padding-left: 140px;
+  /* margin-left: 5%; */
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.left {
   display: flex;
   align-items: flex-start;
 }
@@ -108,7 +129,7 @@ export default {
   padding: 20px;
 }
 .reduce {
-  padding-left: 30%;
+  
   padding-right: 30%;
 }
 .center {
