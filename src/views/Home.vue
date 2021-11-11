@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <!-- Div for Home Section -->
     <div class="home">
       <div id="div-1"></div>
@@ -46,7 +46,7 @@
       <div id="div-1"></div>
       <div class="flex">
         <div class="center">
-          <h5 class="display-2 font-weight-light">{{dj}}</h5>
+          <h5 class="display-2 font-weight-light">Result</h5>
         </div>
       </div>
       <div class="row">
@@ -69,15 +69,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
-import UploadImages from "vue-upload-drop-images";
-
-const New = defineComponent({
-  components: {
-  },
-  setup() {
-const predictionResult = ref('');
+<script>
+let predictionResult;
 //get axios method
 const axios = require("axios");
 axios
@@ -90,6 +83,7 @@ axios
   })
   .then(function () {});
 //post axios method
+import UploadImages from "vue-upload-drop-images";
 let picture;
 let loading = false;
 
@@ -105,12 +99,14 @@ async function SendPicPrediction(formData){
     .then(function (response) {
       console.log(response);
       loading = false;
-      predictionResult.value = response.data.result;
+      predictionResult = response.data.result;
     })
     .catch(function (error) {
       console.log("FAILURE!!");
       console.log(error);
     });
+  dj = predictionResult;
+  console.log(dj);
   console.log(predictionResult);
   // return predictionResult;
 }
@@ -140,23 +136,65 @@ function handleImages(files) {
                     ]
                  */
 }
-const dj = ref('KuyKuy');
-    return{
+export default {
+  data() {
+    return {
       upload: true,
       resultOne: true,
       picture,
-      predictionResult,
-      dj,
-      UploadImages,
-      handleImages,
-      SendPicPrediction,
-    }
+      predictionResult: this.predictionResult,
+      dj:"Kuy"
+    };
   },
-});
-
-export default New;
+  components: { UploadImages },
+  methods: {
+    handleImages,
+    SendPicPrediction
+  },
+};
 </script>
 
-<style lang="scss">
-// .new {}
+<style>
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 20px;
+  padding-left: 140px;
+  /* margin-left: 5%; */
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.left {
+  display: flex;
+  align-items: flex-start;
+}
+.size {
+  border-radius: 25px;
+  background-image: url("../assets/Papaya-fruit.jpg");
+  background-size: 200% 200%;
+  background-position: center bottom;
+  padding: 20px;
+}
+.reduce {
+  padding-right: 30%;
+}
+.center {
+  text-align: center;
+}
+#div-1 {
+  padding: 10px;
+  background: white;
+}
+#div-2 {
+  padding: 50px;
+  background: #f5f5f5;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
