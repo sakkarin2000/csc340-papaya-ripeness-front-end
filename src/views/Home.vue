@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div>
     <!-- Div for Home Section -->
     <div class="home">
       <div id="div-1"></div>
@@ -18,7 +18,7 @@
       <div id="div-1"></div>
     </div>
     <!-- Div for If condition -->
-    <div style="padding-left: 30%;padding-right: 30%;" v-if="resultOne">
+    <div style="padding-left: 30%; padding-right: 30%" v-if="resultOne">
       <div class="size">
         <UploadImages
           @changed="handleImages"
@@ -31,7 +31,7 @@
     </div>
     <!-- Div for Else Condition-->
     <div v-else>
-       <!-- Div Please Wait (v-if= upload) -->
+      <!-- Div Please Wait (v-if= upload) -->
       <!-- <div v-else> 
       <div id="div-1"></div>
       <div class="flex">
@@ -43,39 +43,90 @@
         <h2 class="display-3 font-weight-light">Please Wait...</h2>
       </div>
     </div> -->
-        <div id="div-1"></div>
-        <div class="flex">
-          <div class="center">
-            <h5 class="display-2 font-weight-light">Result</h5>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <img v-bind:src="picture" height="500" />
-          </div>
-          <div class="column">
-            <h5 class="display-1 font-weight-light">Number of papayas</h5>
-            <h2 class="font-weight-light">Ripe: 9</h2>
-            <h2 class="font-weight-light">Medium: 9</h2>
-            <h2 class="font-weight-light">Unripe: 9</h2>
-          </div>
-          <div class="column">
-            <img v-bind:src="picture" height="500" />
-          </div>
+      <div id="div-1"></div>
+      <div class="flex">
+        <div class="center">
+          <h5 class="display-2 font-weight-light">{{dj}}</h5>
         </div>
       </div>
+      <div class="row">
+        <div class="column">
+          <img v-bind:src="picture" height="500" />
+        </div>
+        <div class="column">
+          <!-- <h5 class="display-1 font-weight-light">Number of papayas</h5>
+          <h2 class="font-weight-light">Ripe: 9</h2>
+          <h2 class="font-weight-light">Medium: 9</h2>
+          <h2 class="font-weight-light">Unripe: 9</h2> -->
+          <h2 class="font-weight-light">{{dj}}</h2>
+          <h2 class="font-weight-light">{{predictionResult}}</h2>
+        </div>
+        <div class="column">
+          <img v-bind:src="picture" height="500" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref } from '@vue/composition-api';
 import UploadImages from "vue-upload-drop-images";
+
+const New = defineComponent({
+  components: {
+  },
+  setup() {
+const predictionResult = ref('');
+//get axios method
+const axios = require("axios");
+axios
+  .get("http://8d6d-2001-fb1-12-5e79-4e-295f-47a2-8bf4.ngrok.io/")
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {});
+//post axios method
 let picture;
+let loading = false;
+
+async function SendPicPrediction(formData){
+  console.log("Win Kuy");
+  loading = true;
+  let res = await axios
+    .post(
+      "http://8d6d-2001-fb1-12-5e79-4e-295f-47a2-8bf4.ngrok.io/predict/image",
+      formData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    )
+    .then(function (response) {
+      console.log(response);
+      loading = false;
+      predictionResult.value = response.data.result;
+    })
+    .catch(function (error) {
+      console.log("FAILURE!!");
+      console.log(error);
+    });
+  console.log(predictionResult);
+  // return predictionResult;
+}
 function handleImages(files) {
+  console.log("Win Nahee");
   this.picture = window.URL.createObjectURL(files[0]);
   console.log(files[0].name);
   this.upload = false;
   this.resultOne = false;
-
+  console.log("Isus Win");
+  let formData = new FormData();
+  console.log("Nunu");
+  // console.log(files);
+  formData.append('file',files[0]);
+  console.log("WinWin Kuy");
+  SendPicPrediction(formData);
   /*
                   [
                     {
@@ -89,63 +140,23 @@ function handleImages(files) {
                     ]
                  */
 }
-export default {
-  data() {
-    return {
+const dj = ref('KuyKuy');
+    return{
       upload: true,
       resultOne: true,
       picture,
-    };
+      predictionResult,
+      dj,
+      UploadImages,
+      handleImages,
+      SendPicPrediction,
+    }
   },
-  components: { UploadImages },
-  methods: {
-    handleImages,
-  },
-};
+});
+
+export default New;
 </script>
 
-<style>
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 20px;
-  padding-left: 140px;
-  /* margin-left: 5%; */
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.left {
-  display: flex;
-  align-items: flex-start;
-}
-.size {
-  border-radius: 25px;
-  background-image: url("../assets/Papaya-fruit.jpg");
-  background-size: 200% 200%;
-  background-position: center bottom;
-  padding: 20px;
-}
-.reduce {
-  
-  padding-right: 30%;
-}
-.center {
-  text-align: center;
-}
-#div-1 {
-  padding: 10px;
-  background: white;
-}
-#div-2 {
-  padding: 50px;
-  background: #f5f5f5;
-}
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+<style lang="scss">
+// .new {}
 </style>
