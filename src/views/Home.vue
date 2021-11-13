@@ -18,7 +18,10 @@
       <div id="div-1"></div>
     </div>
     <!-- Div for If condition -->
-    <div style="padding-left: 30%; padding-right: 30%" v-if="resultOne">
+    <div
+      style="padding-left: 30%; padding-right: 30%"
+      v-if="store.state.uploadBox"
+    >
       <div class="size">
         <UploadImages
           @changed="handleImages"
@@ -30,19 +33,20 @@
       </div>
     </div>
     <!-- Div for Else Condition-->
-    <div v-else>
-      <!-- Div Please Wait (v-if= upload) -->
-      <!-- <div v-else> 
+    <!-- Div Please Wait (v-if= upload) -->
+    <div v-if="store.state.loading">
       <div id="div-1"></div>
       <div class="flex">
-      <v-img src="../assets/Animation.gif" max-height="300" max-width="291">
-      </v-img>
+        <v-img src="../assets/Animation.gif" max-height="300" max-width="291">
+        </v-img>
       </div>
       <div id="div-1"></div>
       <div class="center">
         <h2 class="display-3 font-weight-light">Please Wait...</h2>
       </div>
-    </div> -->
+    </div>
+
+    <div v-if="store.state.resultCome">
       <div id="div-1"></div>
       <div class="flex">
         <div class="center">
@@ -58,8 +62,7 @@
           <h2 class="font-weight-light">Ripe: 9</h2>
           <h2 class="font-weight-light">Medium: 9</h2>
           <h2 class="font-weight-light">Unripe: 9</h2> -->
-          <h2 class="font-weight-light">{{dj}}</h2>
-          <h2 class="font-weight-light">{{predictionResult}}</h2>
+          <h2 class="font-weight-light"></h2>
         </div>
         <div class="column">
           <img v-bind:src="picture" height="500" />
@@ -70,11 +73,10 @@
 </template>
 
 <script>
-let predictionResult;
 //get axios method
 const axios = require("axios");
 axios
-  .get("http://8d6d-2001-fb1-12-5e79-4e-295f-47a2-8bf4.ngrok.io/")
+  .get("http://9f3c-2001-fb1-12-5e79-f5be-40ae-2e32-19cf.ngrok.io/")
   .then(function (response) {
     console.log(response);
   })
@@ -85,43 +87,40 @@ axios
 //post axios method
 import UploadImages from "vue-upload-drop-images";
 let picture;
-let loading = false;
 
-async function SendPicPrediction(formData){
-  console.log("Win Kuy");
-  loading = true;
+async function SendPicPrediction(formData) {
   let res = await axios
     .post(
-      "http://8d6d-2001-fb1-12-5e79-4e-295f-47a2-8bf4.ngrok.io/predict/image",
+      "http://9f3c-2001-fb1-12-5e79-f5be-40ae-2e32-19cf.ngrok.io/predict/image",
       formData,
       { headers: { "Content-Type": "multipart/form-data" } }
     )
     .then(function (response) {
       console.log(response);
-      loading = false;
       predictionResult = response.data.result;
+      resultCome = true;
+      this.loading = false;
+      this.uploadBox = false;
     })
     .catch(function (error) {
       console.log("FAILURE!!");
       console.log(error);
     });
-  dj = predictionResult;
-  console.log(dj);
   console.log(predictionResult);
   // return predictionResult;
 }
 function handleImages(files) {
-  console.log("Win Nahee");
   this.picture = window.URL.createObjectURL(files[0]);
+  console.log("Hey!");
   console.log(files[0].name);
   this.upload = false;
-  this.resultOne = false;
-  console.log("Isus Win");
   let formData = new FormData();
   console.log("Nunu");
   // console.log(files);
-  formData.append('file',files[0]);
-  console.log("WinWin Kuy");
+  formData.append("file", files[0]);
+  this.loading = true;
+  this.uploadBox = false;
+  this.resultCome = false;
   SendPicPrediction(formData);
   /*
                   [
@@ -138,18 +137,36 @@ function handleImages(files) {
 }
 export default {
   data() {
+    var store = {
+      state: {
+        loading: false,
+        resultCome: false,
+        uploadBox: true,
+        predictionResult: "",
+      },
+      setLoading(newValue) {
+        this.state.loading = newValue;
+      },
+      setResultCome(newValue) {
+        this.state.resultCome = newValue;
+      },
+      setUploadBox(newValue) {
+        this.state.uploadBox = newValue;
+      },
+      setPredictionResult(newValue) {
+        this.state.predictionResult = newValue;
+      },
+    };
     return {
       upload: true,
-      resultOne: true,
+      shareState: store.state,
       picture,
-      predictionResult: this.predictionResult,
-      dj:"Kuy"
+      predictionResult,
     };
   },
   components: { UploadImages },
   methods: {
     handleImages,
-    SendPicPrediction
   },
 };
 </script>
