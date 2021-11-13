@@ -18,10 +18,7 @@
       <div id="div-1"></div>
     </div>
     <!-- Div for If condition -->
-    <div
-      style="padding-left: 30%; padding-right: 30%"
-      v-if="store.state.uploadBox"
-    >
+    <div style="padding-left: 30%; padding-right: 30%" v-if="resultOne">
       <div class="size">
         <UploadImages
           @changed="handleImages"
@@ -33,20 +30,19 @@
       </div>
     </div>
     <!-- Div for Else Condition-->
-    <!-- Div Please Wait (v-if= upload) -->
-    <div v-if="store.state.loading">
+    <div v-else>
+      <!-- Div Please Wait (v-if= upload) -->
+      <!-- <div v-else> 
       <div id="div-1"></div>
       <div class="flex">
-        <v-img src="../assets/Animation.gif" max-height="300" max-width="291">
-        </v-img>
+      <v-img src="../assets/Animation.gif" max-height="300" max-width="291">
+      </v-img>
       </div>
       <div id="div-1"></div>
       <div class="center">
         <h2 class="display-3 font-weight-light">Please Wait...</h2>
       </div>
-    </div>
-
-    <div v-if="store.state.resultCome">
+    </div> -->
       <div id="div-1"></div>
       <div class="flex">
         <div class="center">
@@ -73,6 +69,7 @@
 </template>
 
 <script>
+let predictionResult;
 //get axios method
 const axios = require("axios");
 axios
@@ -88,7 +85,7 @@ axios
 import UploadImages from "vue-upload-drop-images";
 let picture;
 
-async function SendPicPrediction(formData) {
+async function SendPicPrediction(formData){
   let res = await axios
     .post(
       "http://9f3c-2001-fb1-12-5e79-f5be-40ae-2e32-19cf.ngrok.io/predict/image",
@@ -98,9 +95,6 @@ async function SendPicPrediction(formData) {
     .then(function (response) {
       console.log(response);
       predictionResult = response.data.result;
-      resultCome = true;
-      this.loading = false;
-      this.uploadBox = false;
     })
     .catch(function (error) {
       console.log("FAILURE!!");
@@ -111,16 +105,11 @@ async function SendPicPrediction(formData) {
 }
 function handleImages(files) {
   this.picture = window.URL.createObjectURL(files[0]);
-  console.log("Hey!");
   console.log(files[0].name);
   this.upload = false;
+  this.resultOne = false;
   let formData = new FormData();
-  console.log("Nunu");
-  // console.log(files);
-  formData.append("file", files[0]);
-  this.loading = true;
-  this.uploadBox = false;
-  this.resultCome = false;
+  formData.append('file',files[0]);
   SendPicPrediction(formData);
   /*
                   [
@@ -137,36 +126,16 @@ function handleImages(files) {
 }
 export default {
   data() {
-    var store = {
-      state: {
-        loading: false,
-        resultCome: false,
-        uploadBox: true,
-        predictionResult: "",
-      },
-      setLoading(newValue) {
-        this.state.loading = newValue;
-      },
-      setResultCome(newValue) {
-        this.state.resultCome = newValue;
-      },
-      setUploadBox(newValue) {
-        this.state.uploadBox = newValue;
-      },
-      setPredictionResult(newValue) {
-        this.state.predictionResult = newValue;
-      },
-    };
     return {
       upload: true,
-      shareState: store.state,
+      resultOne: true,
       picture,
-      predictionResult,
+      predictionResult: this.predictionResult,
     };
   },
   components: { UploadImages },
   methods: {
-    handleImages,
+    handleImages
   },
 };
 </script>
