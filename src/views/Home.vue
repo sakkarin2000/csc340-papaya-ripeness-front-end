@@ -121,7 +121,6 @@ export default {
       this.$store.dispatch("clearResult")
       this.$store.dispatch("clearError")
       this.$store.dispatch("setShowUploadBox",false)
-      console.log(this.$store.getters.getShowUploadBox)
       this.$store.dispatch("setLoading",true)
       this.$store.dispatch("getResult",formData)
       
