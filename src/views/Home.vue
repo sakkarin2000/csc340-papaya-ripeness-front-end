@@ -43,54 +43,52 @@
       </div>
     </div>
     <!-- Result -->
+     <!-- Fluid -->
+    <v-container fluid>
     <div style="margin-top: 20" v-if="this.$store.getters.getResult!='' &&this.$store.getters.getResult.ripeness.length==1 ">
       <div class="flex">
         <div class="center">
           <h5 class="display-2 font-weight-light">Result</h5>
         </div>
       </div>
-      <div class="row">
-        <div class="column">
-          <img v-bind:src="picture" height="400" />
-        </div>
-        <div class="column">
-          <!-- <h5 class="display-1 font-weight-light">Number of papayas</h5>
-          <h2 class="font-weight-light">Ripe: 9</h2>
-          <h2 class="font-weight-light">Medium: 9</h2>
-          <h2 class="font-weight-light">Unripe: 9</h2> -->
-          <h2 class="font-weight-light">{{this.$store.getters.getResult.ripeness[0]}}</h2>
-          <h2 class="font-weight-light">{{this.$store.getters.getResult.confident}}</h2>
-
-        </div>
-        <div class="column" v-if="!this.$store.getters.getResult.ripeness.toString().includes('Not Papaya')">
-          <img v-bind:src="'data:image/jpeg;base64,'+this.$store.getters.getResult.img" height="400"  />
-        </div>
-      </div>
+      
+      <v-row>
+        <v-col cols="6" sm="4">
+          <v-img v-bind:src="picture" aspect-ratio="1.7" contain />
+        </v-col>
+        <v-col cols="6" sm="4">
+          <h2 class="font-weight-light">{{this.$store.getters.getResult.ripeness[0].charAt(0).toUpperCase()+this.$store.getters.getResult.ripeness[0].slice(1)}}</h2>
+          <h2 class="font-weight-light" v-if="!this.$store.getters.getResult.ripeness.toString().includes('Not Papaya')">Confident: {{this.$store.getters.getResult.confident}}</h2>
+        </v-col>
+        <v-col v-if="!this.$store.getters.getResult.ripeness.toString().includes('Not Papaya')" cols="6" sm="4">
+          <v-img v-bind:src="'data:image/jpeg;base64,'+this.$store.getters.getResult.img" aspect-ratio="1.7" contain />
+        </v-col>
+      </v-row>
     </div>
+
      <div style="margin-top: 20" v-if="this.$store.getters.getResult!='' &&this.$store.getters.getResult.ripeness.length>1 ">
       <div class="flex">
         <div class="center">
           <h5 class="display-2 font-weight-light">Result</h5>
         </div>
       </div>
-      <div class="row">
-        <div class="column">
-          <img v-bind:src="picture" height="400" />
-        </div>
-        <div class="column">
-          <!-- <h5 class="display-1 font-weight-light">Number of papayas</h5>
-          <h2 class="font-weight-light">Ripe: 9</h2>
-          <h2 class="font-weight-light">Medium: 9</h2>
-          <h2 class="font-weight-light">Unripe: 9</h2> -->
+      <v-row>
+        <v-col cols="6" sm="4">
+          <v-img v-bind:src="picture" aspect-ratio="1.7" contain />
+        </v-col>
+        <v-col cols="6" sm="4">
           <h2 class="font-weight-light">{{(this.$store.getters.getCount['ripe']==null)?("Ripe: "+0):("Ripe: "+this.$store.getters.getCount['ripe'])}}</h2>
           <h2 class="font-weight-light">{{(this.$store.getters.getCount['medium']==null)?("Medium: "+0):("Medium: "+this.$store.getters.getCount['medium'])}}</h2>
           <h2 class="font-weight-light">{{(this.$store.getters.getCount['unripe']==null)?("Unripe: "+0):("Unripe: "+this.$store.getters.getCount['unripe'])}}</h2>
-        </div>
-        <div class="column" v-if="!this.$store.getters.getResult.ripeness.toString().includes('Not Papaya')">
-          <img v-bind:src="'data:image/jpeg;base64,'+this.$store.getters.getResult.img" height="400"  />
-        </div>
-      </div>
+        </v-col>
+        <v-col v-if="!this.$store.getters.getResult.ripeness.toString().includes('Not Papaya')" cols="6" sm="4">
+          <v-img v-bind:src="'data:image/jpeg;base64,'+this.$store.getters.getResult.img" aspect-ratio="1.7" contain />
+        </v-col>
+      </v-row>
     </div>
+    </v-container>
+
+    <div id="div-1"></div>
     <div style="margin-top: 20px" ></div>
     <div style="padding-left: 30%; padding-right: 30% " v-if="this.$store.getters.getResult!=''||this.$store.getters.getError!=''">
       <div class="size">
@@ -103,6 +101,7 @@
         />
       </div>
       <h4 style="color: red">{{this.$store.getters.getError}}</h4>
+      <div id="div-1"></div>
     </div>
   </div>
   <!-- UploadBox -->
