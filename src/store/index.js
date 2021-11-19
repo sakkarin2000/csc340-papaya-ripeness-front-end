@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 Vue.use(Vuex)
-const serverUrl = "http://b89f-2001-fb1-12-a0f0-1461-133-a4f5-7967.ngrok.io"
+const serverUrl = "http://6b8c-2001-fb1-12-a0f0-49ac-3c4f-fc3a-d2e.ngrok.io"
 export default new Vuex.Store({
   state: {
     showUploadBox: true,
