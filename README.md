@@ -56,3 +56,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## References
+1. Oltean, M. (2017). Fruits 360. Retrieved from Kaggle: https://www.kaggle.com/moltean/fruits
+2. Moroney, L. (n.d.). DeepLearning.AI TensorFlow Developer Professional Certificate. Retrieved from Coursera: https://www.coursera.org/learn/introduction-tensorflow/
+3. Bolya, D. (n.d.). You Only Look At CoefficienTs. Retrieved from Github: https://github.com/dbolya/yolact
+4. @heriyusuf. (n.d.). Retrieved from Freepik: https://www.freepik.com/search?author=16940852&authorSlug=heriyusuf&dates=any&format=author&page=1&query=papaya&sort=popular
+5. @heriyusuf. (n.d.). Retrieved from Freepik: https://www.freepik.com/premium-vector/cute-papaya-cartoon-wearing-mask-cute-style-design-t-shirt-sticker-logo-element_17512009.htm#page=1&query=papaya&position=13
+6. mustafamerttunali. (2018). deep-learning-training-gui. Retrieved from Github: https://github.com/mustafamerttunali/deep-learning-training-gui
+7. Bhandari, A. (2020, 17 April). Everything you Should Know about Confusion Matrix for Machine Learning. Retrieved from Analytics Vidhya: https://www.analyticsvidhya.com/blog/2020/04/confusion-matrix-machine-learning/
+8. Bharathi. (2021, June 24). Confusion Matrix for Multi-Class Classification. Retrieved from Analytics Vidhya: https://www.analyticsvidhya.com/blog/2021/06/confusion-matrix-for-multi-class-classification/
+9. รวมเนื้อหาอัพโปรเจค Web Application ขึ้นบน Heroku (How to Deploy Project Web Application On Heroku): https://kongruksiamza.medium.com/รวมเนื้อหาอัพโปรเจค-web-application-ขึ้นบน-heroku-3c95daf18ffd
+10. Heroku: https://www.heroku.com/
+11. Edutechional. (2018, May 26). How to Deploy a Vue CLI 3 Application to Heroku. Retrieved November 19, 2021, from YouTube: https://www.youtube.com/watch?v=yfW9knTBR90
+12. Vue CLI Deployment:  https://cli.vuejs.org/guide/deployment.html#references
+
+[Back to top](#csc340-papaya-ripeness)
