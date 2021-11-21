@@ -1,4 +1,6 @@
 # Papaya Ripeness Classification by Papaya PokPok
+![012](https://user-images.githubusercontent.com/57257235/142750170-3024d77b-84ee-493d-b493-cbf1f5a28bdd.png)
+
 Simple papaya ripeness classification website created with Vue, NodeJS, Axios and NPM
 
 # Table of contents
