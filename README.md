@@ -1,4 +1,4 @@
-# aidev2021
+# CSC340 Papaya Ripeness Classification
 
 ## Project setup
 ```
