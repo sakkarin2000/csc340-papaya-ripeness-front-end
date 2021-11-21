@@ -18,7 +18,7 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### License
+## License
 MIT License
 
 Copyright (c) 2021 W. Thanatat, P. Parinthon and P. Sakkarin
