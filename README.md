@@ -1,10 +1,10 @@
 # Papaya Ripeness Classification by Papaya PokPok
+Simple papaya ripeness classification website created with Vue, NodeJS, Axios and NPM
+
 ![012](https://user-images.githubusercontent.com/57257235/142750170-3024d77b-84ee-493d-b493-cbf1f5a28bdd.png)
 ![3133](https://user-images.githubusercontent.com/57257235/142762774-64df375e-c7e3-440c-b03f-68cc3e813cb1.png)
 ![3134](https://user-images.githubusercontent.com/57257235/142762859-a50acd9c-b494-4572-8563-58286baea9f6.png)
 ![3135](https://user-images.githubusercontent.com/57257235/142762864-6cdf7fb8-6497-4b08-be3b-6a69b339535e.png)
-
-Simple papaya ripeness classification website created with Vue, NodeJS, Axios and NPM
 
 # Table of contents
 * [General Info](#general-info)
