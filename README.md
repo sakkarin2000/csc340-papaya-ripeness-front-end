@@ -1,11 +1,23 @@
 # Papaya Ripeness Classification by Papaya PokPok
-Simple papaya ripeness classification website created with Vue CLI, FastAPI, Python and Pytorch
+Simple papaya ripeness classification website created with Vue, NodeJS, Axios and NPM
 
 # Table of contents
+* [General Info](#general-info)
+* [Technologies](#technologies)
 * [Repository Structure](#repository-structure)
 * [Project Setup](#project-setup)
 * [License](#license)
 * [References](#references)
+
+# General info
+This project is a web application will detect that is papaya or not and check that papaya is ripe, medium or unripe.
+
+# Technologies
+Project is created with:
+* Vue version: 6.14.15
+* NodeJS version: 14.18.0
+* Axios version: 6.14.15
+* NPM version: 6.14.15
 
 # Repository structure
 
