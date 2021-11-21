@@ -1,24 +1,11 @@
 # Papaya Ripeness Classification by Papaya PokPok
+Simple papaya ripeness classification website created with Vue CLI, FastAPI, Python and Pytorch
 
-[![NPM version](https://img.shields.io/npm/v/markdown-it.svg?style=flat)](https://www.npmjs.org/package/markdown-it)
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Table of contents
+* [Repository Structure](#repository-structure)
+* [Project Setup](#project-setup)
+* [License](#license)
+* [References](#references)
 
 # Repository structure
 
@@ -35,6 +22,24 @@ Folder [src/router](src/router) contains the destination for each webpage using 
 Folder [src/store](src/store) contains the storage of url server using Javascript.
 
 Folder [src/views](src/views) contains the lastest of the vue code for showing the landing page and what are we did in our project.
+
+# Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # License
 MIT License
