@@ -71,4 +71,4 @@ SOFTWARE.
 11. Edutechional. (2018, May 26). How to Deploy a Vue CLI 3 Application to Heroku. Retrieved November 19, 2021, from YouTube: https://www.youtube.com/watch?v=yfW9knTBR90
 12. Vue CLI Deployment:  https://cli.vuejs.org/guide/deployment.html#references
 
-[Back to top](#csc340-papaya-ripeness)
+[Back to top](#thanatat-wong/csc340-papaya-ripeness)
