@@ -1,5 +1,7 @@
 # Papaya Ripeness Classification by Papaya PokPok
 
+[![NPM version](https://img.shields.io/npm/v/markdown-it.svg?style=flat)](https://www.npmjs.org/package/markdown-it)
+
 ## Project setup
 ```
 npm install
@@ -18,9 +20,9 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Repository structure
+# Repository structure
 
-Folder [dist](dist) contains
+Folder [dist](dist) contains the building of heroku deployment framework.
 
 Folder [src/assets](src/assets) contains icons and images for using in our website.
 
