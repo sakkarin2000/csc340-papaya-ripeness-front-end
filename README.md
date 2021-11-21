@@ -34,7 +34,7 @@ Folder [src/store](src/store) contains the storage of url server using Javascrip
 
 Folder [src/views](src/views) contains the lastest of the vue code for showing the landing page and what are we did in our project.
 
-## License
+# License
 MIT License
 
 Copyright (c) 2021 Thanatat Wongabut, Parinthon Puksuriwong and Sakkarin Poolsuk
@@ -57,7 +57,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## References
+# References
 1. Oltean, M. (2017). Fruits 360. Retrieved from Kaggle: https://www.kaggle.com/moltean/fruits
 2. Moroney, L. (n.d.). DeepLearning.AI TensorFlow Developer Professional Certificate. Retrieved from Coursera: https://www.coursera.org/learn/introduction-tensorflow/
 3. Bolya, D. (n.d.). You Only Look At CoefficienTs. Retrieved from Github: https://github.com/dbolya/yolact
@@ -70,5 +70,3 @@ SOFTWARE.
 10. Heroku: https://www.heroku.com/
 11. Edutechional. (2018, May 26). How to Deploy a Vue CLI 3 Application to Heroku. Retrieved November 19, 2021, from YouTube: https://www.youtube.com/watch?v=yfW9knTBR90
 12. Vue CLI Deployment:  https://cli.vuejs.org/guide/deployment.html#references
-
-[Back to top](#thanatat-wong/csc340-papaya-ripeness)
